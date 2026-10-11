@@ -61,7 +61,7 @@ they were built from (`vim-static-sources.tar.gz`).
 
 To update a vendored project, check out a new release tag in its submodule, commit it, and update
 `VERSION` if it is the main one, e.g.
-`git -C vendor/vim fetch --depth 1 origin tag v9.2.1172 && git -C vendor/vim checkout v9.2.1172`.
+`git -C vendor/vim fetch --depth 1 origin tag v9.2.1174 && git -C vendor/vim checkout v9.2.1174`.
 
 ## Acknowledgments
 
