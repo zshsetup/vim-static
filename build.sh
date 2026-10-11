@@ -161,7 +161,7 @@ echo ">>> vim"
     --disable-gui --without-x --disable-nls --disable-gpm --disable-sysmouse --disable-selinux \
     --disable-canberra --disable-libsodium --disable-netbeans --disable-darwin \
     --with-tlib=tinfow \
-    CC="$CC" CFLAGS="-Os -I$PREFIX/include" LDFLAGS="$LDSTATIC -L$PREFIX/lib -s" >/dev/null
+    PKG_CONFIG=false CC="$CC" CFLAGS="-Os -I$PREFIX/include" LDFLAGS="$LDSTATIC -L$PREFIX/lib -s" >/dev/null
   "$MAKE" -j"$JOBS"
   "$MAKE" install DESTDIR="$STAGE" >/dev/null
   rm -rf "$DIST"
@@ -188,4 +188,9 @@ if [ "$OS" = Linux ]; then
   fi
 else
   otool -L "$BIN"
+  # only the system may supply libraries, not Homebrew or /usr/local
+  if otool -L "$BIN" | tail -n +2 | grep -q -v -E '^[[:space:]]+(/usr/lib/|/System/)'; then
+    echo "ERROR: vim links a library that is not part of macOS" >&2
+    exit 1
+  fi
 fi
