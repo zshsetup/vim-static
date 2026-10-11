@@ -174,7 +174,7 @@ echo ">>> vim"
 BIN="$DIST/bin/vim"
 echo
 echo ">>> done: $BIN"
-"$BIN" --version | head -n 1
+"$BIN" --version | sed -n 1p
 if [ "$OS" = Linux ]; then
   if [ "$STATIC" = 1 ]; then
     # static musl libc embeds the loader path as a string, so check for an interpreter header.

@@ -32,7 +32,7 @@ fail() {
   exit 1
 }
 
-version="$("$BIN" --version | head -n 1)"
+version="$("$BIN" --version | sed -n 1p)"
 echo "$version" | grep -q '^VIM - Vi IMproved' || fail "vim --version: $version"
 pass "$version"
 
