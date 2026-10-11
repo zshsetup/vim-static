@@ -1,0 +1,8 @@
+[submodule "vendor/vim"]
+    path = vendor/vim
+    url = https://github.com/vim/vim.git
+    shallow = true
+[submodule "vendor/ncurses"]
+    path = vendor/ncurses
+    url = https://github.com/ThomasDickey/ncurses-snapshots.git
+    shallow = true
